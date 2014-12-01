@@ -14,7 +14,6 @@
 
                 <P>
                     <h:commandButton action="#{departamentosController.prepareCreate}" value="Agregar Departamento"/>
-                    <h:commandButton action="#{departamentosController.prepareModificarDepartamentos}" value="Modificar Departamento"/>
                 </P>
                 <p:outputPanel id="DepartamentosTablePanel">
                     <p:dataTable value="#{departamentosController.items}" var="item"
@@ -24,7 +23,7 @@
                                  rowsPerPageTemplate="20,40,60">
 
                         <p:column>
-                            <f:facet name="header">ID Departamento</f:facet>
+                            <f:facet name="header">Código</f:facet>
                             <h:outputText value="#{item.idDpto}"/>
                         </p:column>
 

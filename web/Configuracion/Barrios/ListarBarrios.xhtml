@@ -14,7 +14,6 @@
 
                 <P>
                     <h:commandButton action="#{barriosController.prepareCreate}" value="Agregar Barrios"/>
-                    <h:commandButton action="#{barriosController.prepareModificarBarrios}" value="Modificar Barrios"/>
                 </P>
                 <p:outputPanel id="BarriosTablePanel">
                     <p:dataTable value="#{barriosController.items}" var="item"
@@ -22,11 +21,6 @@
                                  paginator="true"
                                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  rowsPerPageTemplate="20,40,60">
-
-                        <p:column>
-                            <f:facet name="header">ID</f:facet>
-                            <h:outputText value="#{item.idBarrio}"/>
-                        </p:column>
 
                         <p:column filterBy="#{item.nombreBarrio}" filterMatchMode="contains">
                             <f:facet name="header">Nombre Barrios</f:facet>

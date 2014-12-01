@@ -14,7 +14,6 @@
 
                 <P>
                     <h:commandButton action="#{centroFormacionController.prepareCreate}" value="Agregar Centro de Formacion"/>
-                    <h:commandButton action="#{centroFormacionController.prepareModificarCentroFormacion}" value="Modificar Centro de Formacion"/>
                 </P>
                 <p:outputPanel id="CentroFormacionTablePanel">
                     <p:dataTable value="#{centroFormacionController.items}" var="item"
@@ -24,7 +23,7 @@
                                  rowsPerPageTemplate="20,40,60">
 
                         <p:column>
-                            <f:facet name="header">ID Centro de Formacion</f:facet>
+                            <f:facet name="header">Código</f:facet>
                             <h:outputText value="#{item.idCentroFormacion}"/>
                         </p:column>
 

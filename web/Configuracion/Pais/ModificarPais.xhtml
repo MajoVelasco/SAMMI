@@ -12,7 +12,7 @@
         <ui:define name="body">
             
             <h:form> 
-            <h:commandButton value="Agregar Pais" action="#{paisController.prepareAgregarPais}"/>
+                <h:commandButton value="Agregar Pais" action="#{paisController.prepareModificarPais}"/>
             <h:commandButton value="Volver A Lista" action="#{paisController.prepareListPais}"/>
             
             </h:form>
@@ -25,13 +25,13 @@
                         <input type="text" jsf:id="NombPaisInputText" required="true"
                                jsf:requiredMessage="Por favor ingrese el nombre" 
                                jsf:validatorMessage="Use solo letras"
-                               jsf:value="#{paisController.paisActual.nombrepais}" maxlength="30">
+                               jsf:value="#{paisController.selected.nombrepais}" maxlength="30">
                             <f:validateRegex pattern="[a-zA-Z áéíóúÁÉÍÓÚÑñ]*"/>
                             <f:ajax execute="@this" render="NombPaisMessage"/>
                         </input>
                         <h:message id="NombPaisMessage" for="NombPaisInputText" styleClass="error"/>
                     </p:panelGrid>
-                    <h:commandButton value="Guardar" action="#{paisController.addPais}"/>
+                    <h:commandButton value="Guardar" action="#{paisController.update}"/>
                 </form>
             </section>
 

@@ -14,7 +14,6 @@
 
                 <P>
                     <h:commandButton action="#{ciudadController.prepareCreate}" value="Agregar Ciudad"/>
-                    <h:commandButton action="#{ciudadController.prepareModificarCiudad}" value="Modificar Ciudad"/>
                 </P>
                 <p:outputPanel id="CiudadTablePanel">
                     <p:dataTable value="#{ciudadController.items}" var="item"
@@ -24,7 +23,7 @@
                                  rowsPerPageTemplate="20,40,60">
 
                         <p:column>
-                            <f:facet name="header">ID Ciudad</f:facet>
+                            <f:facet name="header">Código</f:facet>
                             <h:outputText value="#{item.ciudadPK}"/>
                         </p:column>
 

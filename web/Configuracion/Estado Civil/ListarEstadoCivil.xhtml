@@ -22,11 +22,6 @@
                                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  rowsPerPageTemplate="20,40,60">
 
-                        <p:column>
-                            <f:facet name="header">ID Estado Civil</f:facet>
-                            <h:outputText value="#{item.idEstadoCivil}"/>
-                        </p:column>
-
                         <p:column filterBy="#{item.nombreEstadoCivil}" filterMatchMode="contains">
                             <f:facet name="header">Nombre Estado Civil</f:facet>
                             <h:outputText value="#{item.nombreEstadoCivil}"/>

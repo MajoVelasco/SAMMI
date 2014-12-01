@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:jsf="http://xmlns.jcp.org/jsf">
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <head jsf:id="head">
         <meta charset="UTF-8"/>
@@ -21,7 +22,7 @@
         <p:growl id="growl" life="3000" />
         <header Class="Header">
             <figure Class="Header-imageContainer">
-                <img class="Header-logo" src="#{request.contextPath}/resources/images/template/logo.png" width="200"/>
+                <a jsf:outcome="/index.xhtml"><img class="Header-logo" src="#{request.contextPath}/resources/images/template/logo.png"  width="200"/></a>
             </figure>
             <center class="Header-title"><h1>SISTEMA ADMINISTRATIVO<br>MODULAR INTEGRADO</br></h1></center>
             <article class="header-id">
@@ -31,12 +32,12 @@
                         <li class="HeaderList-item"><h3 id="list-box">Modulos<span class="icon-triangle-down"></span></h3>
                             <ul>
                                 <li class="HeaderList-link"><a  jsf:outcome="/Modulo1/index_modulo1.xhtml">Contratación y cuentas de cobro</a></li>
-                                <li class="HeaderList-link"><a  jsf:outcome="/Modulo2/index_modulo2.xhtml">Supervisión de contratos y mantenimiento</a></li>
+                                <li class="HeaderList-link"><a  jsf:outcome="/Modulo2/index_modulo2.xhtml">Supervisión de contratistas</a></li>
+                                <li class="HeaderList-link"><a  jsf:outcome="/Modulo7/index_modulo7.xhtml">Mantenimiento</a></li>
                                 <li class="HeaderList-link"><a  jsf:outcome="/Modulo3/index_modulo3.xhtml">Supervisión de contratos de compras, suministros y servicios</a></li>
                                 <li class="HeaderList-link"><a  jsf:outcome="/Modulo4/index_modulo4.xhtml">Gestión y talento humano</a></li>
                                 <li class="HeaderList-link"><a  jsf:outcome="/Modulo5/index_modulo5.xhtml">Gestión documental</a></li>
                                 <li class="HeaderList-link"><a  jsf:outcome="/Modulo6/index_modulo6.xhtml">Gestión de materiales de formación</a></li>
-                                <li class="HeaderList-link"><a  jsf:outcome="/Configuracion/index_configuracion.xhtml">Configuracion</a></li>
                                 <li class="HeaderList-link"><a  href="">Cerrar Sesión</a></li>
                             </ul>
                         </li>
@@ -73,12 +74,44 @@
                 <p class="Footer-descriptioncon">Fax: 2750965</p>
             </article>
             <article class="Footer-item">
-                <i class="icon-icon-sofia-01"></i>
-                <i class="icon-icon-sena0"></i>
-                <i class="icon-cog"></i>
-                <i class="icon-help"></i>
+
+                <a href="http://oferta.senasofiaplus.edu.co/sofia-oferta/" class="icon-icon-sofia-01"></a>
+                <a href="http://www.sena.edu.co/Paginas/Inicio.aspx" class="icon-icon-sena0"></a>
+                <a jsf:outcome="/Configuracion/index_configuracion.xhtml" class="icon-cog"></a>
+                <a type="button" onclick="PF('dlg2').show();" class="icon-help" ></a>
             </article>
         </footer>
+        <p:dialog header="Servicio de Ayuda" widgetVar="dlg2" modal="true" height="280">
+            <h:outputText value="" />
+            <h:form>
+    <p:panel header="Tienes un problema?, te ayudamos">
+        <p:messages autoUpdate="true"/>
+ 
+        <h:panelGrid id="grid" columns="4" cellpadding="5">
+            <h:outputLabel for="to" value="Para:" style="font-weight:bold"/>                    
+            <p:inputText id="to" value="#{emailController.to}" required="true" label="to"/>
+            <p:message for="to" />
+            <h:outputText value="#{emailController.to}" />
+ 
+            <h:outputLabel for="subject" value="Asunto:" style="font-weight:bold"/>                    
+            <p:inputText id="subject" value="#{emailController.subject}" label="subject">
+                <f:validateDoubleRange minimum="5" maximum="8" />
+            </p:inputText>
+            <p:message for="subject" />
+            <h:outputText value="#{emailController.subject}" />
+ 
+            <h:outputLabel for="desc" value="Description" style="font-weight:bold"/>
+            <p:inputTextarea id="desc" value="#{emailController.body}" required="true" label="Description">
+                <f:validateLength minimum="3" maximum="10" /> 
+            </p:inputTextarea>
+            <p:message for="desc" />
+            <h:outputText value="#{emailController.body}" />
+
+        </h:panelGrid>
+        <p:commandButton icon="ui-icon-mail-closed" value="Enviar" action="#{emailController.sendMail}"/>
+    </p:panel>
+</h:form> 
+        </p:dialog> 
 
         <form jsf:id="confirmForm">
             <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">

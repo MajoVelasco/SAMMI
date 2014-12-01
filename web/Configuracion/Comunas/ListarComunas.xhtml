@@ -14,7 +14,6 @@
 
                 <P>
                     <h:commandButton action="#{comunasController.prepareCreate}" value="Agregar Comunas"/>
-                    <h:commandButton action="#{comunasController.prepareModificarComunas}" value="Modificar Comunas"/>
                 </P>
                 <p:outputPanel id="ComunasTablePanel">
                     <p:dataTable value="#{comunasController.items}" var="item"
@@ -22,11 +21,6 @@
                                  paginator="true"
                                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  rowsPerPageTemplate="20,40,60">
-
-                        <p:column>
-                            <f:facet name="header">ID Comuna</f:facet>
-                            <h:outputText value="#{item.idComuna}"/>
-                        </p:column>
 
                         <p:column filterBy="#{item.nombreComuna}" filterMatchMode="contains">
                             <f:facet name="header">Nombre Comuna</f:facet>

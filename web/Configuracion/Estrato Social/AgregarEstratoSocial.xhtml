@@ -12,8 +12,8 @@
         <ui:define name="body">
 
             <h:form> 
-                <h:commandButton value="Agregar Estrato Social" action="#{EstratoSocialController.prepareAgregarEstractoSocial}"/>
-                <h:commandButton value="Volver A Lista" action="#{EstratoSocialController.prepareModificarEstratoSocial}"/>
+                <h:commandButton value="Agregar Estrato Social" action="#{estratoSocialController.prepareCreate}"/>
+                <h:commandButton value="Volver A Lista" action="#{estratoSocialController.prepareListEstratoSocial}"/>
 
             </h:form>
 
@@ -24,13 +24,13 @@
                         <input type="text" jsf:id="NombreEstratoSocialInputText" required="true"
                                jsf:requiredMessage="Por favor ingrese el nombre de la eps" 
                                jsf:validatorMessage="Use solo letras"
-                               jsf:value="#{EstratoSocialController.estratoSocialActual.nombreEstrato}" maxlength="30">
+                               jsf:value="#{estratoSocialController.selected.nombreEstrato}" maxlength="30">
                             <f:validateRegex pattern="[a-zA-Z áéíóúÁÉÍÓÚÑñ]*"/>
                             <f:ajax execute="@this" render="NombreEstratoSocialMessage"/>
                         </input>
                         <h:message id="NombreEstratoSocialMessage" for="NombreEstratoSocialInputText" styleClass="error"/>
                     </p:panelGrid>
-                    <h:commandButton value="Guardar" action="#{EstratoSocialController.addEstractoSocial}"/>
+                    <h:commandButton value="Guardar" action="#{estratoSocialController.create}"/>
                 </form>
             </section>
 
