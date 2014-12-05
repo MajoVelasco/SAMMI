@@ -47,12 +47,12 @@ public class UsuariosController implements Serializable {
     public Usuarios getSelected() {
         return selected;
     }
-    
+
     public CiudadFacade getCiudadFacade() {
         return ciudadFacade;
     }
-    
-     public RolFacade getRolFacade() {
+
+    public RolFacade getRolFacade() {
         return rolFacade;
     }
 
@@ -84,7 +84,7 @@ public class UsuariosController implements Serializable {
         initializeEmbeddableKey();
         return "Agregar";
     }
-    
+
     public String prepareModificarUsuario() {
         return "Modificar";
     }
@@ -96,25 +96,25 @@ public class UsuariosController implements Serializable {
     public String prepareListUsuario() {
         return "/Modulo5/Gestion Documental/Usuarios/Listar";
     }
-    
-    public String prepareModificarUsuario() {
-        return "Modificar";
-    }
 
-    public String prepareConsultarUsuario() {
-        return "Consultar";
-    }
-
-    public String prepareListUsuario() {
-        return "/Modulo5/Gestion Documental/Usuarios/Listar";
-    }
+//    public String prepareModificarUsuario() {
+//        return "Modificar";
+//    }
+//
+//    public String prepareConsultarUsuario() {
+//        return "Consultar";
+//    }
+//
+//    public String prepareListUsuario() {
+//        return "/Modulo5/Gestion Documental/Usuarios/Listar";
+//    }
 
     public void create() {
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/resources/Bundle").getString("UsuariosCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
-        
+
         try {
             selected.setFacheDeCreacion(new Date());
             selected.setEstado(true);
@@ -122,13 +122,13 @@ public class UsuariosController implements Serializable {
             getFacade().create(selected);
         } catch (Exception e) {
             addErrorMessage("Error closing resource " + e.getClass().getName(), "Message: " + e.getMessage());
-            
+
         }
     }
 
     public void update() {
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/resources/Bundle").getString("UsuariosUpdated"));
-        
+
     }
 
     public void destroy() {
@@ -145,8 +145,8 @@ public class UsuariosController implements Serializable {
         }
         return items;
     }
-    
-     public List<Ciudad> getListCiudadesAutoComplete(String query) {
+
+    public List<Ciudad> getListCiudadesAutoComplete(String query) {
         try {
             return getCiudadFacade().findByNombre(query);
         } catch (Exception ex) {
@@ -155,8 +155,6 @@ public class UsuariosController implements Serializable {
             return null;
         }
     }
-
-   
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
@@ -197,11 +195,10 @@ public class UsuariosController implements Serializable {
     public List<Usuarios> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
-    
-     public List<Rol> getListRolSelectOne() {
+
+    public List<Rol> getListRolSelectOne() {
         return getRolFacade().findAll();
     }
-    
 
     @FacesConverter(forClass = Usuarios.class)
     public static class UsuariosControllerConverter implements Converter {
@@ -243,13 +240,13 @@ public class UsuariosController implements Serializable {
         }
 
     }
-    
-       public void validarDocumento(FacesContext contex, UIComponent component, Object value)
+
+    public void validarDocumento(FacesContext contex, UIComponent component, Object value)
             throws ValidatorException {
-           Usuarios UsuarioConsulta = getFacade().findByNumeroDocumento((String) value);
+        Usuarios UsuarioConsulta = getFacade().findByNumeroDocumento((String) value);
 
         if (UsuarioConsulta != null) {
-            if (selected.getNumeroDoc()!= null) {
+            if (selected.getNumeroDoc() != null) {
                 if (!Objects.equals(selected.getNumeroDoc(), UsuarioConsulta.getNumeroDoc())) {
                     throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,
                             ResourceBundle.getBundle("/resources/Bundle").getString("ValidatorDocumentoTitle"),
@@ -265,7 +262,6 @@ public class UsuariosController implements Serializable {
             selected.setNumeroDoc(documento);
         }
     }
-
 
     private void addErrorMessage(String title, String msg) {
         FacesMessage facesMsg
