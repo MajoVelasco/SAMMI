@@ -158,7 +158,7 @@ public class CentroFormacion implements Serializable {
 
     @Override
     public String toString() {
-        return nombreCentroFormacion + " ";
+        return nombreCentroFormacion + "";
     }
     
 }

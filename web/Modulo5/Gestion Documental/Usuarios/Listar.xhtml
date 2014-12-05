@@ -9,58 +9,57 @@
         <ui:define name="title">LISTA DE USUARIOS</ui:define>
         <ui:define name="menu"><ui:include src="/Modulo5/menu_modulo5.xhtml"></ui:include></ui:define>
         <ui:define name="body">
-       
-            
-            <h:form>
 
-                <P>
-                    <h:commandButton action="#{usuariosController.prepareCreate}" value="Agregar Usuario"/>
-                    <h:commandButton action="#{usuariosController.update}" value="Modificar Usuario"/>
-                </P>
+
+            <h:form>
+                <p>
+                    <p:commandButton id="createButton" icon="ui-icon-plusthick" value="#{bundle.Create}" action="#{usuariosController.prepareCreate}"/>
+                </p>
+                
                 <p:outputPanel id="UsuarioTablePanel">
-                    <p:dataTable value="#{usuarioController.listaUsuarios}" var="item"
+                    <p:dataTable value="#{usuariosController.items}" var="item"
                                  rows="10" id="UsuarioTable" 
                                  paginator="true"
                                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  rowsPerPageTemplate="20,40,60">
 
-                        <p:column filterBy="#{item.numeroDeCedula}" filterMatchMode="contains">
+                        <p:column filterBy="#{item.numeroDoc}" filterMatchMode="contains">
                             <f:facet name="header">Identificacion</f:facet>
-                            <h:outputText value="#{item.numeroDeCedula}"/>
+                            <h:outputText value="#{item.numeroDoc}"/>
                         </p:column>
 
                         <p:column>
                             <f:facet name="header">Primer Nombre</f:facet>
-                            <h:outputText value="#{item.nombre1}"/>
+                            <h:outputText value="#{item.razonSocial}"/>
                         </p:column>
-                        
+
                         <p:column>
                             <f:facet name="header">Segundo Nombre</f:facet>
-                            <h:outputText value="#{item.nombre2}"/>
+                            <h:outputText value="#{item.segundoNombre}"/>
                         </p:column>
-                        
+
                         <p:column>
                             <f:facet name="header">Primer Apellido</f:facet>
-                            <h:outputText value="#{item.apellido1}"/>
+                            <h:outputText value="#{item.primerApellido}"/>
                         </p:column>
-                        
+
                         <p:column>
                             <f:facet name="header">Segundo Apellido</f:facet>
-                            <h:outputText value="#{item.apellido2}"/>
+                            <h:outputText value="#{item.segundoApellido}"/>
                         </p:column>
-                        
-                         <p:column>
-                             <p:commandButton icon="ui-icon-pencil" action="#{usuarioController.prepareModificar}">
-                                 <f:setPropertyActionListener value="#{item}" target="#{usuarioController.usuarioActual}"/>
-                        </p:commandButton>
 
-                             <p:commandButton icon="ui-icon-trash" action="#{usuarioController.deleteUsuario}"
-                                         process="@this" update="UsuarioTable">
-                            <p:confirm header="Confirmación" message="¿Esta seguro que desea eliminar el usuario?" icon="ui-icon-alert" />
-                            <f:setPropertyActionListener value="#{item}" target="#{usuarioController.usuarioActual}"/>
-                        </p:commandButton>
-                    </p:column>
-                        
+                        <p:column>
+                            <p:commandButton icon="ui-icon-pencil" action="#{usuarioController.prepareModificar}">
+                                <f:setPropertyActionListener value="#{item}" target="#{usuarioController.usuarioActual}"/>
+                            </p:commandButton>
+
+                            <p:commandButton icon="ui-icon-trash" action="#{usuarioController.deleteUsuario}"
+                                             process="@this" update="UsuarioTable">
+                                <p:confirm header="Confirmación" message="¿Esta seguro que desea eliminar el usuario?" icon="ui-icon-alert" />
+                                <f:setPropertyActionListener value="#{item}" target="#{usuarioController.usuarioActual}"/>
+                            </p:commandButton>
+                        </p:column>
+
                     </p:dataTable>
                 </p:outputPanel>
             </h:form>
