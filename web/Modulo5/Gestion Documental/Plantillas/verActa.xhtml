@@ -13,9 +13,19 @@
         <ui:define name="body">
             <section>
                 <h4>Acta</h4>
-                <a class="Section-link" href="../../../../resources/documentos/Formato_Acta.docx">Descarga en Word</a>
+                <h:form>
+                    <h:commandButton value="Descargar en Word" action="/resources/documentos/Formato_Acta.docx"></h:commandButton>
+                </h:form>
+            
                 <embed class="Section-Embed" src="../../../../resources/documentos/Formato_Acta.pdf#toolbar=0" width="500" height="375"></embed>
             </section>
+            <h:form>
+                <p:growl id="messages" showDetail="true" />
+
+                <p:fileUpload value="#{documentosController.file}" mode="simple"/>
+
+                <p:commandButton value="Cargar Archivo" ajax="false" actionListener="#{documentosController.upload}" />
+            </h:form>
         </ui:define>
     </ui:composition>
 </html>

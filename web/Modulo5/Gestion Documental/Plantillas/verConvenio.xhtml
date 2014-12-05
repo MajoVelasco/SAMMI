@@ -9,13 +9,22 @@
       xmlns:p="http://primefaces.org/ui">
     <ui:composition template="/template.xhtml">
         <ui:define name="title">Gestion Documental</ui:define>
-         <ui:define name="menu"><ui:include src="/Modulo5/menu_modulo5.xhtml"></ui:include></ui:define>
+        <ui:define name="menu"><ui:include src="/Modulo5/menu_modulo5.xhtml"></ui:include></ui:define>
         <ui:define name="body">
-        <section>
-                    <h4>Convenio</h4>
-                     <a class="Section-link" href="../../../../resources/documentos/Formato_Convenio.doc">Descarga en Word</a>
+            <section>
+                <h4>Convenio</h4>
+                <h:form>
+                    <h:commandButton value="Descargar en Word" action="/resources/documentos/Formato_Convenio.doc"></h:commandButton>
+                </h:form>
                 <embed class="Section-Embed" src="../../../../resources/documentos/Formato_Convenio.pdf#toolbar=0" width="500" height="375"></embed>
-                </section>
+            </section>
+            <h:form>
+                <p:growl id="messages" showDetail="true" />
+
+                <p:fileUpload value="#{documentosController.file}" mode="simple"/>
+
+                <p:commandButton value="Cargar Archivo" ajax="false" actionListener="#{documentosController.upload}" />
+            </h:form>
         </ui:define>
     </ui:composition>
 </html>

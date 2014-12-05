@@ -7,6 +7,12 @@
   <ui:composition template="/template.xhtml">
         <ui:define name="title">Sami</ui:define>
         <ui:define name="menu"><ui:include src="/Modulo5/menu_modulo5.xhtml"></ui:include></ui:define>
-        <ui:define name="body"></ui:define>
+        <ui:define name="body">
+            <aside>
+            <video width="320" height="240" control="true" autoplay="true">
+                <source src="#{request.contextPath}/resources/videos/Gestion documental.mp4" type="video/mp4"></source>
+            </video> 
+          </aside>
+        </ui:define>
   </ui:composition>
 </html>

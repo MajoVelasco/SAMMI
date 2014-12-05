@@ -26,19 +26,19 @@
                             <f:facet name="header"><h:outputText value="#{bundle.ListFondoDePensionesTitle_nombreFondoPensiones}"/></f:facet>
                             <h:outputText value="#{item.nombreFondoPensiones}"/>
                         </p:column>
-
-                        <p:column>
-
-                            <p:commandButton icon="ui-icon-pencil" value="#{bundle.Edit}" action="#{fondoDePensionesController.prepareModificarFondoDePensiones}">
+                        
+                         <p:column>
+                         
+                             <p:commandButton icon="ui-icon-pencil" action="#{fondoDePensionesController.prepareModificarFondoDePensiones}">
                                  <f:setPropertyActionListener value="#{item}" target="#{fondoDePensionesController.selected}"/>
-                            </p:commandButton>
+                        </p:commandButton>
 
-                            <p:commandButton icon="ui-icon-trash" value="#{bundle.Delete}" action="#{fondoDePensionesController.destroy}"
-                                             process="@this" update="FondoPensionesTable">
-                                <p:confirm header="Confirmación" message="¿Esta seguro que desea eliminar el fondo de pension" icon="ui-icon-alert" />
-                                <f:setPropertyActionListener value="#{item}" target="#{fondoDePensionesController.selected}"/>
-                            </p:commandButton>
-                        </p:column>
+                             <p:commandButton icon="ui-icon-trash" action="#{fondoDePensionesController.destroy}"
+                                         process="@this" update="FondoPensionesTable">
+                            <p:confirm header="Confirmación" message="¿Esta seguro que desea eliminar el empleado?" icon="ui-icon-alert" />
+                            <f:setPropertyActionListener value="#{item}" target="#{fondoDePensionesController.selected}"/>
+                        </p:commandButton>
+                    </p:column>
 
 
                     </p:dataTable>

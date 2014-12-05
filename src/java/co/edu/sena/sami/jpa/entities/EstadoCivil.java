@@ -100,7 +100,7 @@ public class EstadoCivil implements Serializable {
 
     @Override
     public String toString() {
-        return nombreEstadoCivil + "";
+        return  nombreEstadoCivil + " ";
     }
     
 }

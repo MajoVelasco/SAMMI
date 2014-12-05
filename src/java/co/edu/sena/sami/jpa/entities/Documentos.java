@@ -14,8 +14,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -26,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Adsim
+ * @author Usuario
  */
 @Entity
 @Table(name = "documentos")
@@ -56,9 +54,6 @@ public class Documentos implements Serializable {
     private Date fechaIngreso;
     @Column(name = "activo")
     private Boolean activo;
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
-    @ManyToOne(optional = false)
-    private Usuarios idUsuario;
 
     public Documentos() {
     }
@@ -105,14 +100,6 @@ public class Documentos implements Serializable {
 
     public void setActivo(Boolean activo) {
         this.activo = activo;
-    }
-
-    public Usuarios getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Usuarios idUsuario) {
-        this.idUsuario = idUsuario;
     }
 
     @Override

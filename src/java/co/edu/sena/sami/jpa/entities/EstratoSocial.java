@@ -108,7 +108,7 @@ public class EstratoSocial implements Serializable {
 
     @Override
     public String toString() {
-        return nombreEstrato + "";
+        return nombreEstrato + " ";
     }
     
 }

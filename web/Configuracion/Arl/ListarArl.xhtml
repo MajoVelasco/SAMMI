@@ -11,7 +11,7 @@
         <ui:define name="body">
         <h1>Lista De Riesgos Laborales</h1>
             <h:form>
-                
+
                 <P>
                     <h:commandButton action="#{arlController.prepareCreate}" value="Agregar ARL"/>
                 </P>
@@ -33,13 +33,19 @@
                                  <f:setPropertyActionListener value="#{item}" target="#{arlController.selected}"/>
                         </p:commandButton>
 
-                        <p:commandButton icon="ui-icon-trash" value="#{bundle.Delete}" action="#{arlController.destroy}"
-                                         process="@this" update="ArlTable">
-                            <p:confirm header="Confirmación" message="¿Esta seguro que desea eliminar la ARL?" icon="ui-icon-alert" />
-                            <f:setPropertyActionListener value="#{item}" target="#{arlController.selected}"/>
-                        </p:commandButton>
-                    </p:column>
-                        
+                        <p:column>
+                            <f:facet name="header">Opciones</f:facet>
+                            <p:commandButton icon="ui-icon-pencil" action="#{arlController.prepareModificarArl}">
+                                <f:setPropertyActionListener value="#{item}" target="#{arlController.selected}"/>
+                            </p:commandButton>
+
+                            <p:commandButton icon="ui-icon-trash" action="#{arlController.destroy}"
+                                             process="@this" update="ArlTable">
+                                <p:confirm header="Confirmación" message="¿Esta seguro que desea eliminar la ARL?" icon="ui-icon-alert" />
+                                <f:setPropertyActionListener value="#{item}" target="#{arlController.selected}"/>
+                            </p:commandButton>
+                        </p:column>
+
                     </p:dataTable>
                 </p:outputPanel>
             </h:form>

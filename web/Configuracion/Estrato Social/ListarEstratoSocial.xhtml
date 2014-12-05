@@ -24,18 +24,18 @@
                                  rowsPerPageTemplate="20,40,60">
 
                         <p:column>
-                            <f:facet name="header"><h:outputText value="#{bundle.ListEstratoSocialTitle_nombreEstrato}"/></f:facet>
+                            <f:facet name="header">Nombre Estrato Social</f:facet>
                             <h:outputText value="#{item.nombreEstrato}"/>
                         </p:column>
                          <p:column>
                          
-                             <p:commandButton icon="ui-icon-pencil" value="#{bundle.Edit}" action="#{estratoSocialController.prepareModificarEstratoSocial}">
+                             <p:commandButton icon="ui-icon-pencil" action="#{estratoSocialController.prepareModificarEstratoSocial}">
                                  <f:setPropertyActionListener value="#{item}" target="#{estratoSocialController.selected}"/>
                         </p:commandButton>
 
-                             <p:commandButton icon="ui-icon-trash" value="#{bundle.Delete}" action="#{estratoSocialController.destroy}"
+                             <p:commandButton icon="ui-icon-trash" action="#{estratoSocialController.destroy}"
                                          process="@this" update="EstratoSocialTable">
-                            <p:confirm header="Confirmación" message="¿Esta seguro que desea eliminar el estrato social?" icon="ui-icon-alert" />
+                            <p:confirm header="Confirmación" message="¿Esta seguro que desea eliminar el empleado?" icon="ui-icon-alert" />
                             <f:setPropertyActionListener value="#{item}" target="#{estratoSocialController.selected}"/>
                         </p:commandButton>
                     </p:column>
