@@ -6,10 +6,10 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <ui:composition template="/template.xhtml">
-        <ui:define name="title">Fondo de Pensiones <h:outputText value="#{bundle.ListFondoDePensionesTitle}"></h:outputText></ui:define>
+        <ui:define name="title">Listar Fondo de Pensiones</ui:define>
         <ui:define name="menu"><ui:include src="/Configuracion/menu_configuracion.xhtml"></ui:include></ui:define>
         <ui:define name="body">
-            <h1>Lista De Fondo De Pensiones</h1>
+            <h1>LISTAR FONDO DE PENSIONES</h1>
             <h:form>
 
                 <P>
@@ -23,7 +23,7 @@
                                  rowsPerPageTemplate="20,40,60">
 
                         <p:column filterBy="#{item.nombreFondoPensiones}" filterMatchMode="contains">
-                            <f:facet name="header"><h:outputText value="#{bundle.ListFondoDePensionesTitle_nombreFondoPensiones}"/></f:facet>
+                            <f:facet name="header">Nombre Fondo de Pensiones</f:facet>
                             <h:outputText value="#{item.nombreFondoPensiones}"/>
                         </p:column>
                         

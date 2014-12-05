@@ -6,10 +6,10 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <ui:composition template="/template.xhtml">
-        <ui:define name="title">Lista Arl <h:outputText value="#{bundle.ListArlTitle}"></h:outputText> </ui:define>
+        <ui:define name="title">LISTAR ARL</ui:define>
         <ui:define name="menu"><ui:include src="/Configuracion/menu_configuracion.xhtml"></ui:include></ui:define>
         <ui:define name="body">
-        <h1>Lista De Riesgos Laborales</h1>
+            <h1>LISTA DE ARL</h1>
             <h:form>
 
                 <P>
@@ -23,15 +23,9 @@
                                  rowsPerPageTemplate="20,40,60">
 
                         <p:column filterBy="#{item.nombreArl}" filterMatchMode="contains">
-                            <f:facet name="header"> <h:outputText value="#{bundle.ListArlTitle_nombreArl}"/></f:facet>
+                            <f:facet name="header">Nombre Arl</f:facet>
                             <h:outputText value="#{item.nombreArl}"/>
                         </p:column>
-                        
-                         <p:column>
-                        <f:facet name="header">Opciones</f:facet>
-                             <p:commandButton icon="ui-icon-pencil" value="#{bundle.Edit}" action="#{arlController.prepareModificarArl}">
-                                 <f:setPropertyActionListener value="#{item}" target="#{arlController.selected}"/>
-                        </p:commandButton>
 
                         <p:column>
                             <f:facet name="header">Opciones</f:facet>

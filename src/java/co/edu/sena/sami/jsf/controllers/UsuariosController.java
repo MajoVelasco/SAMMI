@@ -96,6 +96,18 @@ public class UsuariosController implements Serializable {
     public String prepareListUsuario() {
         return "/Modulo5/Gestion Documental/Usuarios/Listar";
     }
+    
+    public String prepareModificarUsuario() {
+        return "Modificar";
+    }
+
+    public String prepareConsultarUsuario() {
+        return "Consultar";
+    }
+
+    public String prepareListUsuario() {
+        return "/Modulo5/Gestion Documental/Usuarios/Listar";
+    }
 
     public void create() {
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/resources/Bundle").getString("UsuariosCreated"));

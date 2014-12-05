@@ -46,6 +46,7 @@
         <mime-type>image/svg+xml</mime-type>  
     </mime-mapping>
     
+   
     
     <filter>
         <filter-name>PrimeFaces FileUpload Filter</filter-name>
